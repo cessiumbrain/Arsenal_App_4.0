@@ -1,0 +1,100 @@
+$primary-color: red;
+$secondary-color: rgb(255, 233, 201, .5);
+$primary-font: "Roboto";
+$prim-text-color: white;
+
+.App {
+    background: $primary-color;
+    min-height: 100vh;
+    font-family: $primary-font;
+    display: flex;
+    flex-direction: column;
+
+
+    button{
+        background: $primary-color;
+        color: $prim-text-color;
+        border-radius: 10px;
+        box-shadow: none;
+        border: none;
+        min-width: 200px;
+        padding: 5px;
+    }
+    input {
+        padding: 5px;
+        border-radius: 10px;
+        border: none;
+        min-width: 200px;
+    }
+}
+//All Glass Overlay Components
+.Signup,.Login,.AdminDash,.UserDash,.Admin-Waitlist, .Special-Select,.SetVacancy {
+    background: $secondary-color;
+    color: $prim-text-color;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    filter: drop-shadow(30px 10px 4px #00000080);
+}
+//Individual Components
+.AdminDash {
+    flex-direction: row;
+    flex-wrap: wrap;
+    h1{
+        flex-basis: 100%;
+        text-align: center;
+    }
+    .dash-button {
+        min-width: 150px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5px;
+        border: 1px solid $secondary-color;
+        border-radius: 50%;
+
+    }
+}
+.UserDash{
+    flex-direction: row;
+    flex-wrap: wrap;
+    h1{
+        flex-basis: 100%;
+        text-align: center;
+    }
+    .dash-display {
+        min-width: 150px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5px;
+        border: 1px solid $secondary-color;
+        border-radius: 50%;
+
+    }
+}
+.NavMenu {
+    flex-direction: column;
+
+    background-color: $secondary-color;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    .dropdown.open{
+        display: block;
+    }
+    .dropdown.closed{
+        display: none;
+    }
+}
