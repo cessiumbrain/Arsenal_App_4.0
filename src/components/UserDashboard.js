@@ -1,7 +1,7 @@
-function UserDashboard(props){
+function UserDashboard(){
     return(
         <div className="UserDash">
-            <h1>Admin Dashboard</h1>
+            <h1>User Dashboard</h1>
             <div className="dash-display">Waitlist Display</div>
             <div className="dash-display">Special Display</div>
             <div className="dash-display">Vacancy Display</div>

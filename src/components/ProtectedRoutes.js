@@ -11,7 +11,9 @@ import { UserContext } from "../utils/context";
 
 function ProtectedRoutes(props) {
   const user = useContext(UserContext)
+
   if (user.admin) {
+
     return (
       <Routes>
         <Route
@@ -29,9 +31,12 @@ function ProtectedRoutes(props) {
       </Routes>
     );
   } else {
-    <Routes>
-      <Route path="/user" element={<UserDashboard></UserDashboard>}></Route>
-    </Routes>;
+    return(
+       <Routes>
+      <Route path="/" element={<UserDashboard></UserDashboard>}></Route>
+    </Routes>
+    )
+   
   }
 }
 export default ProtectedRoutes;

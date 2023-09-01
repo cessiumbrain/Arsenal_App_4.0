@@ -1,13 +1,13 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { UsersContext } from "../utils/context";
+import { UserContext } from "../utils/context";
 
 function NavMenu(props) {
-  const users= useContext(UsersContext)
+  const user= useContext(UserContext)
   const [menuOpen, setMenuOpen] = useState(false);
 
-  console.log(users)
-  return (
+  if(user.admin){
+      return (
     <div className="NavMenu">
       <button
         className="open-btn"
@@ -43,6 +43,12 @@ function NavMenu(props) {
       </div>
     </div>
   );
+  } else {
+    return (
+      <></>
+    )
+  }
+
 }
 
 export default NavMenu;

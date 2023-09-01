@@ -5,9 +5,11 @@ import { useState } from "react";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { UserContext, UsersContext } from "./utils/context";
 import Login from "./components/Login";
+import { getUsers } from "./utils/dbFunctions";
 
 function App() {
   const [user, setUser] = useState({
+    firstName: 'Joe',
     admin: false,
   });
   const [users, setUsers] = useState([])

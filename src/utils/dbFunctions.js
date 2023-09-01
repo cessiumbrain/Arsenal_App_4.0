@@ -1,3 +1,4 @@
-function getUsers(dbInstance){
-    return dbInstance.from
+export function getUsers(dbInstance){
+    return dbInstance.from('Users')
+    .select('*')
 }
