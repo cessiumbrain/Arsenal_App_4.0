@@ -2,15 +2,15 @@ import "./App.css";
 import NavMenu from "./components/NavMenu";
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
-import ProtectedRoutes from "./components/ProtectedRoutes";
 import { UserContext, UsersContext } from "./utils/context";
 import Login from "./components/Login";
-import { getUsers } from "./utils/dbFunctions";
+import AdminWrapper from "./components/AdminWrapper";
+import UserWrapper from "./components/UserWrapper";
 
 function App() {
   const [user, setUser] = useState({
     firstName: 'Joe',
-    admin: false,
+    admin: true,
   });
   const [users, setUsers] = useState([])
   
@@ -20,7 +20,8 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <NavMenu></NavMenu>
-          <ProtectedRoutes></ProtectedRoutes>
+          {user.admin ? <AdminWrapper></AdminWrapper> : <UserWrapper></UserWrapper>}
+          
         </div>
       </BrowserRouter>
     </UserContext.Provider>

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=VT323&display=swap");
 .App {
   background: red;
   min-height: 100vh;
@@ -88,4 +89,27 @@
 }
 .NavMenu .dropdown.closed {
   display: none;
+}
+
+.Admin-Waitlist .waitlist {
+  border: 1px solid black;
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-radius: 10px;
+}
+.Admin-Waitlist .waitlist li {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+.Admin-Waitlist .waitlist li span {
+  flex-basis: 70%;
+}
+.Admin-Waitlist .waitlist li i {
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 5px;
 }/*# sourceMappingURL=App.css.map */

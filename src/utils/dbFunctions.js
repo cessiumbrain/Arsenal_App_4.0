@@ -1,4 +1,3 @@
-export function getUsers(dbInstance){
-    return dbInstance.from('Users')
-    .select('*')
+export function addWaitlistUser(dbInstance, user_id){
+    dbInstance.rpc({"user_id": user_id})
 }
