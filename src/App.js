@@ -17,6 +17,9 @@ function App() {
   if(user){
     return (
     <UserContext.Provider value={user}>
+
+
+  
       <BrowserRouter>
         <div className="App">
           <NavMenu></NavMenu>
@@ -24,6 +27,7 @@ function App() {
           
         </div>
       </BrowserRouter>
+
     </UserContext.Provider>
   );
   } else {

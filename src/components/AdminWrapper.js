@@ -23,7 +23,7 @@ function AdminWrapper() {
       const { data, error } = await supabase.from("Users").select("*");
       setUsers(data);
     }
-    async function getWaitlist() {
+    async function fetchWaitlist() {
       let { data :Waitlist, error } = await supabase
       .from("Waitlist")
       .select(`
@@ -32,39 +32,45 @@ function AdminWrapper() {
         user_id,
         first_name, last_name
         )`);
-    console.log(Waitlist)
+        console.log('waitlist:', Waitlist)
+        //sort into ascending by position
+        Waitlist.sort((a,b)=>{
+          return a.position-b.position
+        })
       setWaitlist(Waitlist);
     }
 
     getUsers();
-    getWaitlist();
+    fetchWaitlist();
 
-    //subscribe to db changes
-    supabase
+    //subscribe to waitlist changes
+
+    // const Waitlist = supabase.channel('custom-all-channel')
+    // .on(
+    //   'postgres_changes',
+    //   { event: '*', schema: 'public', table: 'Waitlist' },
+    //   (payload) => {
+    //     console.log('Change received!', payload)
+    //   }
+    // )
+    // .subscribe()
+    // console.log(Waitlist)
+
+      const Waitlist = supabase
       .channel("custom-all-channel")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "Users" },
+        { event: "*", schema: "public", table: "Waitlist" },
         (payload) => {
-          console.log(payload);
+          fetchWaitlist()
         }
       )
       .subscribe();
 
-      supabase
-      .channel("custom-all-channel")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "Users" },
-        (payload) => {
-          console.log(payload);
-        }
-      )
-      .subscribe();
 
-    return;
+
     //subscription cleanup
-    supabase.removeAllChannels()
+
   }, []);
 
   return (

@@ -1,4 +1,6 @@
 ## To Do
+- [ ] break up waitlist and add waitlist
+- [ ] connect db functions
 - [ ] Refactor db functions to imports
 - [ ] Refine Style Components
 

@@ -4,6 +4,7 @@
 //variables
 $primary-color: red;
 $secondary-color: rgb(255, 233, 201, .5);
+$tertiary-color: #d19600;
 $primary-font: "Roboto";
 $prim-text-color: white;
 
@@ -23,6 +24,9 @@ $prim-text-color: white;
         border: none;
         min-width: 200px;
         padding: 5px;
+    }
+    button:active {
+        background-color: $tertiary-color;       
     }
     input {
         padding: 5px;
@@ -124,8 +128,20 @@ $prim-text-color: white;
                 border: 1px solid white;
                 border-radius: 50%;
                 padding: 5px;
+                background: $tertiary-color;
             }
         }
 
+    }
+    .wait-select {
+        text-align: center;
+        select{
+            display: block;
+            margin: auto;
+            width: 75%;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 5px auto;
+        }
     }
 }
