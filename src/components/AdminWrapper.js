@@ -8,18 +8,20 @@ import SetVacancy from "./SetVacancy";
 import { UsersContext } from "../utils/context";
 import { WaitlistContext } from "../utils/context";
 
-import { addWaitlistUser } from "../utils/dbFunctions";
+import { addWaitlistUser, moveDownWaitUser } from "../utils/dbFunctions";
 
 function AdminWrapper() {
   //useState
   const [users, setUsers] = useState();
   const [waitlist, setWaitlist] = useState();
+  const [specials, setSpecials] = useState();
 
+  
 //db functions
 
   useEffect(() => {
     //initial fetch operations
-    async function getUsers() {
+    async function fetchUsers() {
       const { data, error } = await supabase.from("Users").select("*");
       setUsers(data);
     }
@@ -32,7 +34,7 @@ function AdminWrapper() {
         user_id,
         first_name, last_name
         )`);
-        console.log('waitlist:', Waitlist)
+
         //sort into ascending by position
         Waitlist.sort((a,b)=>{
           return a.position-b.position
@@ -40,37 +42,27 @@ function AdminWrapper() {
       setWaitlist(Waitlist);
     }
 
-    getUsers();
+    fetchUsers();
     fetchWaitlist();
 
     //subscribe to waitlist changes
-
-    // const Waitlist = supabase.channel('custom-all-channel')
-    // .on(
-    //   'postgres_changes',
-    //   { event: '*', schema: 'public', table: 'Waitlist' },
-    //   (payload) => {
-    //     console.log('Change received!', payload)
-    //   }
-    // )
-    // .subscribe()
-    // console.log(Waitlist)
-
       const Waitlist = supabase
       .channel("custom-all-channel")
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "Waitlist" },
         (payload) => {
+          
           fetchWaitlist()
         }
       )
       .subscribe();
+      console.log(Waitlist)
 
 
 
     //subscription cleanup
-
+      return 
   }, []);
 
   return (
@@ -83,10 +75,12 @@ function AdminWrapper() {
           ></Route>
           <Route path="/admin-wait" element={<AdminWaitlist
           addWaitlistUser={addWaitlistUser}
+          moveWai
           />} />
           <Route
             path="/special-select"
-            element={<SpecialSelect></SpecialSelect>}
+            element={<SpecialSelect
+            specials={specials}></SpecialSelect>}
           />
           <Route path="/set-vacancy" element={<SetVacancy></SetVacancy>} />
         </Routes>

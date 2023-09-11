@@ -2,12 +2,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=VT323&display=swap');
 
 //variables
-$primary-color: red;
+$primary-color: rgb(141, 3, 10);
 $secondary-color: rgb(255, 233, 201, .5);
 $tertiary-color: #d19600;
 $primary-font: "Roboto";
 $prim-text-color: white;
 
+@mixin input{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    min-width: 200px;
+    margin: 10px;
+}
+@mixin button{
+    background: $primary-color;
+    color: $prim-text-color;
+    border-radius: 10px;
+    box-shadow: none;
+    border: none;
+    min-width: 200px;
+    padding: 5px;
+    margin: 5px;
+}
+@mixin select {
+    padding: 5px;
+    border-radius: 5px;
+    &:focus {
+        border: none;
+        outline: none;
+    }
+
+}
+//Global
+select {
+    @include select()
+}
 .App {
     background: $primary-color;
     min-height: 100vh;
@@ -36,7 +66,7 @@ $prim-text-color: white;
     }
 }
 //All Glass Overlay Components
-.Signup,.Login,.AdminDash,.UserDash,.Admin-Waitlist, .Special-Select,.SetVacancy {
+.Signup,.AdminDash,.UserDash,.Admin-Waitlist, .Special-Select,.SetVacancy {
     background: $secondary-color;
     color: $prim-text-color;
     width: 90%;
@@ -78,26 +108,51 @@ $prim-text-color: white;
         text-align: center;
     }
     .dash-display {
-        min-width: 150px;
+        
         height: 150px;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
         margin: 5px;
         border: 1px solid $secondary-color;
-        border-radius: 50%;
-
+        border-radius: 10px;
+        flex-basis: 150px;
+    }
+    p {
+        padding: 2px;
+        text-align: center;
     }
 }
 .NavMenu {
+    background-color: $tertiary-color;
     flex-direction: column;
-
-    background-color: $secondary-color;
     position: absolute;
     top: 0px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    filter: drop-shadow(0px 10px 4px #0000005a);
+    align-items: center;
+    z-index: 1;
+    
+    ul {
+        list-style: none;
+        padding: 0px;
+        text-align: center;
+        li{
+            padding: 2.5px
+        }
+        a{
+            color: black;
+            font-weight: 200;
+            text-decoration: none;
+        }
+    }
+    i{
+        padding: 5px;
+        margin: 2px;
+    }
 
     .dropdown.open{
         display: block;
@@ -143,5 +198,20 @@ $prim-text-color: white;
             border-radius: 5px;
             margin: 5px auto;
         }
+    }
+}
+.Login{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: $tertiary-color;
+
+    input{
+        @include input
+    }
+    button {
+        @include button
     }
 }

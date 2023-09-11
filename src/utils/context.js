@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { supabase } from "./supabase";
+
 
 export const UsersContext = createContext()
 

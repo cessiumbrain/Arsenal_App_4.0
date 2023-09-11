@@ -1,54 +1,61 @@
 import { useContext, useEffect, useState } from "react";
 import { UsersContext, WaitlistContext } from "../utils/context";
-import {supabase} from '../utils/supabase'
+import { supabase } from "../utils/supabase";
+import { moveDownWaitUser, test } from "../utils/dbFunctions";
 
-function WaitDisplay(props){
+function WaitDisplay(props) {
   const waitlist = useContext(WaitlistContext);
 
-  return(
+  return (
     <ul className="waitlist">
-        {waitlist
-          ? waitlist.map((user) => {
-              return (
-                <li key={user.user_id}>
-                  <span className="position">{user.position}</span>
-                  <span>
-                    {user.Users.first_name} {user.Users.last_name}
-                  </span>
-                  <i className="fa-solid fa-arrow-up"></i>
-                  <i className="fa-solid fa-arrow-down"></i>
-                  <i className="fa-solid fa-trash"></i>
-                </li>
-              );
-            })
-          : ""}
-      </ul>
-  )
+      {waitlist
+        ? waitlist.map((user) => {
+            return (
+              <li key={user.user_id}>
+                <span className="position">{user.position}</span>
+                <span>
+                  {user.Users.first_name} {user.Users.last_name}
+                </span>
+                <i className="fa-solid fa-arrow-up"></i>
+                <i
+                  onClick={() => {
+                    moveDownWaitUser(supabase, user.position, user.user_id);
+                  }}
+                  className="fa-solid fa-arrow-down"
+                ></i>
+                <i onClick={() => {}} className="fa-solid fa-trash"></i>
+              </li>
+            );
+          })
+        : ""}
+    </ul>
+  );
 }
 
-function WaitSelect(props){
+function WaitSelect(props) {
   const users = useContext(UsersContext);
 
   const [selectedUser, setSelectedUser] = useState();
-  const [waitError, setWaitError] = useState()
-  
-  async function addWaitlistUser(dbInstance, user_id){
-    const {data, error} = await dbInstance.rpc("addWaitUser",{"user_id_input": user_id})
-    if(error){
-      setWaitError(true)
-      console.log(error)
+  const [waitError, setWaitError] = useState();
+
+  async function addWaitlistUser(dbInstance, user_id) {
+    const { data, error } = await dbInstance.rpc("addWaitUser", {
+      user_id_input: user_id,
+    });
+    if (error) {
+      setWaitError(true);
+      console.log(error);
     } else {
-      setWaitError(false)
+      setWaitError(false);
     }
-    
-}
-  return(
+  }
+  return (
     <div className="wait-select">
-    <h1>User Select</h1>
+      <h1>User Select</h1>
       <select
         onChange={(e) => {
           const option = e.target.options[e.target.selectedIndex];
-          setSelectedUser(option.value)
+          setSelectedUser(option.value);
         }}
       >
         <option></option>
@@ -62,16 +69,18 @@ function WaitSelect(props){
             })
           : ""}
       </select>
-      <button onClick={() => {
-        addWaitlistUser(supabase, selectedUser)
-      }
-        }>Add User</button>
-        <p>{waitError ? 'An error has occured, check the console' : ''}</p>
+      <button
+        onClick={() => {
+          addWaitlistUser(supabase, selectedUser);
+        }}
+      >
+        Add User
+      </button>
+      <p>{waitError ? "An error has occured, check the console" : ""}</p>
     </div>
-  )
+  );
 }
 function AdminWaitlist(props) {
-  
   return (
     <div className="Admin-Waitlist">
       <h1>Admin Waitlist</h1>

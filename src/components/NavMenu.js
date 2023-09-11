@@ -8,15 +8,12 @@ function NavMenu(props) {
 
   if(user.admin){
       return (
-    <div className="NavMenu">
-      <button
-        className="open-btn"
+    <div 
         onClick={() => {
           setMenuOpen(!menuOpen);
-        }}
-      >
-        Open
-      </button>
+        }} className="NavMenu">
+          {menuOpen ? <i class="fa-solid fa-caret-up"></i>: <i class="fa-solid fa-caret-down"></i>}
+
       <div className={`dropdown ${menuOpen ? "open" : "closed"}`}>
         <ul>
             <li>
@@ -38,6 +35,9 @@ function NavMenu(props) {
             <Link to="/set-vacancy">
                 Set Vacancy
             </Link>
+          </li>
+          <li onClick={props.logOut}>
+            Logout
           </li>
         </ul>
       </div>
