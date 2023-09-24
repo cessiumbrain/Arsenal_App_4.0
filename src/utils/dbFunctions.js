@@ -13,20 +13,12 @@ export async function moveDownWaitUser(dbInstance, position_input, user_id_input
 }
 
 export async function moveUserUp(dbInstance, upward_user_id, downward_user_id){
-
+    
 }
 
-// export async function deleteWaitUser(dbInstance, position_input){
-//     console.log("deleteWaitUser")
-//     const {data, error} = await dbInstance.rpc("fn1")
-//     console.log(data, error)
+// export async function createNewDbUser(dbInstance, firstName, lastName){
+    
+//         console.log(email, password, firstName, lastName)
 // }
 
-// export async function test(dbInstance, position_input, user_id){
 
-//     console.log("test", {"position_input": position_input, "user_id": user_id})
-
-//     const {data, error} = await dbInstance.rpc("test", {"position_input": position_input, "user_id": user_id})
-
-//     console.log(data, error)
-// }

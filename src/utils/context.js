@@ -9,3 +9,5 @@ export const WaitlistContext = createContext()
 
 export const SpecialContext = createContext()
 
+export const VacancyContext = createContext()
+

@@ -10,7 +10,8 @@ import { WaitlistContext } from "../utils/context";
 
 import { addWaitlistUser, moveDownWaitUser } from "../utils/dbFunctions";
 
-function AdminWrapper() {
+function AdminWrapper(props) {
+
   //useState
   const [users, setUsers] = useState();
   const [waitlist, setWaitlist] = useState();
@@ -47,7 +48,7 @@ function AdminWrapper() {
 
     //subscribe to waitlist changes
       const Waitlist = supabase
-      .channel("custom-all-channel")
+      .channel("Waitlist-channel")
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "Waitlist" },
@@ -57,12 +58,12 @@ function AdminWrapper() {
         }
       )
       .subscribe();
-      console.log(Waitlist)
-
+        console.log('waitlist subscription', Waitlist)
 
 
     //subscription cleanup
       return 
+      supabase.removeChannel(Waitlist)
   }, []);
 
   return (
@@ -82,7 +83,8 @@ function AdminWrapper() {
             element={<SpecialSelect
             specials={specials}></SpecialSelect>}
           />
-          <Route path="/set-vacancy" element={<SetVacancy></SetVacancy>} />
+          <Route path="/set-vacancy" element={<SetVacancy
+          changeVacancy={props.changeVacancy}></SetVacancy>} />
         </Routes>
       </WaitlistContext.Provider>
     </UsersContext.Provider>

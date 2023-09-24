@@ -6,6 +6,21 @@ import { moveDownWaitUser, test } from "../utils/dbFunctions";
 function WaitDisplay(props) {
   const waitlist = useContext(WaitlistContext);
 
+  async function handleDelete(userid){
+    const {data, error} = await supabase.rpc('deletewaitlistuser', {'user_id_input': userid})
+    console.log(data, error)
+  }
+  async function handleMoveDown(position, user_id){
+    console.log(user_id)
+    const {data, error}= await supabase.rpc('moveUserDownWaitlist', {'current_position': position,'user_id_to_move': user_id})
+    console.log(data, error)
+  }
+  async function handleMoveUp(position, user_id){
+    console.log(position, user_id)
+    const {data, error}= await supabase.rpc('moveUserUpWaitlist', {'current_position': position,'user_id_to_move': user_id})
+    console.log(data, error)
+  }
+
   return (
     <ul className="waitlist">
       {waitlist
@@ -16,14 +31,17 @@ function WaitDisplay(props) {
                 <span>
                   {user.Users.first_name} {user.Users.last_name}
                 </span>
-                <i className="fa-solid fa-arrow-up"></i>
-                <i
-                  onClick={() => {
-                    moveDownWaitUser(supabase, user.position, user.user_id);
+                <i className="fa-solid fa-arrow-up"
+                  onClick={()=>{
+                    handleMoveUp(user.position, user.user_id)
                   }}
-                  className="fa-solid fa-arrow-down"
                 ></i>
-                <i onClick={() => {}} className="fa-solid fa-trash"></i>
+                <i className="fa-solid fa-arrow-down"
+                  onClick={() => {
+                    handleMoveDown(user.position, user.user_id)
+                  }}
+                ></i>
+                <i onClick={() => {handleDelete(user.user_id)}} className="fa-solid fa-trash"></i>
               </li>
             );
           })

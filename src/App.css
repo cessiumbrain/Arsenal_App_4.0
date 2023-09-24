@@ -2,30 +2,33 @@
 select {
   padding: 5px;
   border-radius: 5px;
+  width: 200px;
 }
 select:focus {
   border: none;
   outline: none;
 }
 
-.App {
-  background: rgb(141, 3, 10);
-  min-height: 100vh;
-  font-family: "Roboto";
-  display: flex;
-  flex-direction: column;
-}
-.App button {
-  background: rgb(141, 3, 10);
-  color: white;
+button {
+  background: rgb(255, 233, 201);
+  color: black;
   border-radius: 10px;
   box-shadow: none;
   border: none;
   min-width: 200px;
   padding: 5px;
+  margin: 5px;
+}
+
+.App {
+  background-image: url("./assets/Collage Multiply.jpg");
+  min-height: 100vh;
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
 }
 .App button:active {
-  background-color: #d19600;
+  background-color: #cfa578;
 }
 .App input {
   padding: 5px;
@@ -35,7 +38,7 @@ select:focus {
 }
 
 .Signup, .AdminDash, .UserDash, .Admin-Waitlist, .Special-Select, .SetVacancy {
-  background: rgba(255, 233, 201, 0.5);
+  background: #4e1e11;
   color: white;
   width: 90%;
   margin: auto;
@@ -64,8 +67,9 @@ select:focus {
   align-items: center;
   justify-content: center;
   margin: 5px;
-  border: 1px solid rgba(255, 233, 201, 0.5);
+  border: 1px solid rgb(255, 233, 201);
   border-radius: 50%;
+  box-shadow: 10px 5px 5px black;
 }
 
 .UserDash {
@@ -83,9 +87,9 @@ select:focus {
   justify-content: center;
   flex-direction: column;
   margin: 5px;
-  border: 1px solid rgba(255, 233, 201, 0.5);
+  border: 1px solid rgb(255, 233, 201);
   border-radius: 10px;
-  flex-basis: 150px;
+  flex-basis: 200px;
 }
 .UserDash p {
   padding: 2px;
@@ -93,7 +97,7 @@ select:focus {
 }
 
 .NavMenu {
-  background-color: #d19600;
+  background-color: #cfa578;
   flex-direction: column;
   position: absolute;
   top: 0px;
@@ -149,7 +153,7 @@ select:focus {
   border: 1px solid white;
   border-radius: 50%;
   padding: 5px;
-  background: #d19600;
+  background: #cfa578;
 }
 .Admin-Waitlist .wait-select {
   text-align: center;
@@ -169,7 +173,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background: #d19600;
+  background: #cfa578;
 }
 .Login input {
   padding: 5px;
@@ -179,12 +183,45 @@ select:focus {
   margin: 10px;
 }
 .Login button {
-  background: rgb(141, 3, 10);
-  color: white;
+  background: rgb(255, 233, 201);
+  color: black;
   border-radius: 10px;
   box-shadow: none;
   border: none;
   min-width: 200px;
   padding: 5px;
   margin: 5px;
+}
+
+.SignUp {
+  margin: 0px;
+  min-height: 100vh;
+  background-color: #4e1e11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.SignUp input {
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  min-width: 200px;
+  margin: 10px;
+}
+.SignUp h1 {
+  margin: 0px;
+}
+.SignUp .container {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255, 233, 201);
+  border-radius: 5px;
+  padding: 10px;
+}
+.SignUp .login-button {
+  background-color: rgb(255, 233, 201);
 }/*# sourceMappingURL=App.css.map */

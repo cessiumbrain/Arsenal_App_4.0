@@ -12,7 +12,7 @@ function NavMenu(props) {
         onClick={() => {
           setMenuOpen(!menuOpen);
         }} className="NavMenu">
-          {menuOpen ? <i class="fa-solid fa-caret-up"></i>: <i class="fa-solid fa-caret-down"></i>}
+          {menuOpen ? <i className="fa-solid fa-caret-up"></i>: <i className="fa-solid fa-caret-down"></i>}
 
       <div className={`dropdown ${menuOpen ? "open" : "closed"}`}>
         <ul>
@@ -45,7 +45,20 @@ function NavMenu(props) {
   );
   } else {
     return (
-      <></>
+      <div 
+      onClick={() => {
+        setMenuOpen(!menuOpen);
+      }} className="NavMenu">
+        {menuOpen ? <i className="fa-solid fa-caret-up"></i>: <i className="fa-solid fa-caret-down"></i>}
+
+    <div className={`dropdown ${menuOpen ? "open" : "closed"}`}>
+      <ul>
+        <li onClick={props.logOut}>
+          Logout
+        </li>
+      </ul>
+    </div>
+  </div>
     )
   }
 

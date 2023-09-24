@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=VT323&display=swap');
 
 //variables
-$primary-color: rgb(141, 3, 10);
-$secondary-color: rgb(255, 233, 201, .5);
-$tertiary-color: #d19600;
+$primary-color: #4e1e11;
+$secondary-color: rgb(255, 233, 201);
+$tertiary-color: #cfa578;
 $primary-font: "Roboto";
 $prim-text-color: white;
+$btn-select-width: 200px;
 
 @mixin input{
     padding: 5px;
@@ -16,8 +17,8 @@ $prim-text-color: white;
     margin: 10px;
 }
 @mixin button{
-    background: $primary-color;
-    color: $prim-text-color;
+    background: $secondary-color;
+    color: black;
     border-radius: 10px;
     box-shadow: none;
     border: none;
@@ -28,6 +29,7 @@ $prim-text-color: white;
 @mixin select {
     padding: 5px;
     border-radius: 5px;
+    width: $btn-select-width;
     &:focus {
         border: none;
         outline: none;
@@ -38,23 +40,18 @@ $prim-text-color: white;
 select {
     @include select()
 }
+button {
+    @include button()
+}
 .App {
-    background: $primary-color;
+    background-image: url('./assets/Collage\ Multiply.jpg');
     min-height: 100vh;
     font-family: $primary-font;
     display: flex;
     flex-direction: column;
 
 
-    button{
-        background: $primary-color;
-        color: $prim-text-color;
-        border-radius: 10px;
-        box-shadow: none;
-        border: none;
-        min-width: 200px;
-        padding: 5px;
-    }
+
     button:active {
         background-color: $tertiary-color;       
     }
@@ -66,8 +63,8 @@ select {
     }
 }
 //All Glass Overlay Components
-.Signup,.AdminDash,.UserDash,.Admin-Waitlist, .Special-Select,.SetVacancy {
-    background: $secondary-color;
+.Signup,.AdminDash,.UserDash,.Admin-Waitlist, .Special-Select,.SetVacancy{
+    background: $primary-color;
     color: $prim-text-color;
     width: 90%;
     margin: auto;
@@ -97,6 +94,8 @@ select {
         margin: 5px;
         border: 1px solid $secondary-color;
         border-radius: 50%;
+        box-shadow: 10px 5px 5px black;
+        
 
     }
 }
@@ -117,7 +116,7 @@ select {
         margin: 5px;
         border: 1px solid $secondary-color;
         border-radius: 10px;
-        flex-basis: 150px;
+        flex-basis: 200px;
     }
     p {
         padding: 2px;
@@ -213,5 +212,33 @@ select {
     }
     button {
         @include button
+    }
+}
+.SignUp {
+    input {
+        @include input()
+    }
+    margin: 0px;
+    min-height: 100vh;
+    background-color: $primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h1{
+        margin: 0px;
+    }
+    .container {
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: $secondary-color;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .login-button {
+        background-color: $secondary-color;
     }
 }
