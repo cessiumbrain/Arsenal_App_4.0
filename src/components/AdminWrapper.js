@@ -26,49 +26,20 @@ function AdminWrapper(props) {
       const { data, error } = await supabase.from("Users").select("*");
       setUsers(data);
     }
-    async function fetchWaitlist() {
-      let { data :Waitlist, error } = await supabase
-      .from("Waitlist")
-      .select(`
-        *,
-        Users (
-        user_id,
-        first_name, last_name
-        )`);
-
-        //sort into ascending by position
-        Waitlist.sort((a,b)=>{
-          return a.position-b.position
-        })
-      setWaitlist(Waitlist);
-    }
-
+  
     fetchUsers();
-    fetchWaitlist();
 
-    //subscribe to waitlist changes
-      const Waitlist = supabase
-      .channel("Waitlist-channel")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "Waitlist" },
-        (payload) => {
-          
-          fetchWaitlist()
-        }
-      )
-      .subscribe();
-        console.log('waitlist subscription', Waitlist)
+
+
 
 
     //subscription cleanup
       return 
-      supabase.removeChannel(Waitlist)
+
   }, []);
 
   return (
     <UsersContext.Provider value={users}>
-      <WaitlistContext.Provider value={waitlist}>
         <Routes>
           <Route
             path="/admin"
@@ -86,7 +57,6 @@ function AdminWrapper(props) {
           <Route path="/set-vacancy" element={<SetVacancy
           changeVacancy={props.changeVacancy}></SetVacancy>} />
         </Routes>
-      </WaitlistContext.Provider>
     </UsersContext.Provider>
   );
 }

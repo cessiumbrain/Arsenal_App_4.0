@@ -9,13 +9,13 @@ function SetVacancy(props){
         return vacancy.active==='true'
     }
         )
-    console.log(vacancy, activeVacancy)
+
     return(
         <div className="SetVacancy">
             <h1>Set Vacancy</h1>
             <select onChange={(e)=>{
                 setSelectedVacancy(e.target.value)
-                console.log(e.target.value)
+
             }
                 }>
                 <option></option>

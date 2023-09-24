@@ -11,7 +11,7 @@ import { supabase } from "./utils/supabase";
 
 function App() {
   const [user, setUser] = useState({
-    admin: false,
+    admin: true,
     user_id: '99b2eac8-366e-4f1c-89dd-862134a21d57'
   });
   const [ waitlist, setWaitlist ] = useState()
@@ -46,7 +46,7 @@ Waitlist.forEach(item =>{
 })
 
     //sort into ascending by position
-    Waitlist.sort((a, b) => {
+    Waitlist?.sort((a, b) => {
       return a.position - b.position;
     });
 
