@@ -15,10 +15,7 @@ import { supabase } from "./utils/supabase";
 
 function App() {
   //state
-  const [user, setUser] = useState({
-    admin: false,
-    user_id: "99b2eac8-366e-4f1c-89dd-862134a21d57",
-  });
+  const [user, setUser] = useState();
   const [waitlist, setWaitlist] = useState();
   const [vacancy, setVacancy] = useState();
   const [specialsList, setSpecialsList] = useState();

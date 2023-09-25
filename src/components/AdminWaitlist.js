@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { UsersContext, WaitlistContext } from "../utils/context";
 import { supabase } from "../utils/supabase";
-import { moveDownWaitUser, test } from "../utils/dbFunctions";
 
-function WaitDisplay(props) {
+
+function WaitDisplay() {
   const waitlist = useContext(WaitlistContext);
 
   async function handleDelete(userid){
@@ -50,14 +50,14 @@ function WaitDisplay(props) {
   );
 }
 
-function WaitSelect(props) {
+function WaitSelect() {
   const users = useContext(UsersContext);
 
   const [selectedUser, setSelectedUser] = useState();
   const [waitError, setWaitError] = useState();
 
   async function addWaitlistUser(dbInstance, user_id) {
-    const { data, error } = await dbInstance.rpc("addWaitUser", {
+    const { error } = await dbInstance.rpc("addWaitUser", {
       user_id_input: user_id,
     });
     if (error) {
