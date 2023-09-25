@@ -7,7 +7,6 @@ function Login(props){
     const [ password, setPassword ] = useState()
 
     async function handleLogin(){
-        console.log(email, password)
 
         const { data, error } = await supabase.auth
         .signInWithPassword({
@@ -18,9 +17,15 @@ function Login(props){
         if(error){
             console.warn(error)
         }
-    
-    
-        props.setUser(data.user)
+        
+        const {data: data2, error: error2} = await supabase.from('Users')
+        .select('*')
+        .eq('user_id', data.user.id)
+        
+        if(error2){
+            console.warn(error2)
+        }
+        props.setUser(data2[0])
 
     }
 

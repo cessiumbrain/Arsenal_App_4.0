@@ -20,8 +20,9 @@ function UserDashboard(props) {
     setActiveSpecial(specialsList?.find((special) => special.active));
 
     if (waitlist) {
+      console.log(waitlist)
       const userPosition = waitlist.find((item) => {
-        console.log(item.user_id, user.user_id);
+        console.log(item.user_id, user.user_id)
         return item.user_id === user.user_id;
       })?.position;
 
@@ -30,11 +31,13 @@ function UserDashboard(props) {
     if (vacancy) {
       setActiveVacancy(
         vacancy.find((item) => {
+
           return item.active === true;
         })
+        
       );
     }
-  }, [specialsList, waitlist, vacancy, user.user_id]);
+  }, [specialsList, waitlist, vacancy, user.user_id, activeVacancy]);
 
   return (
     <div className="UserDash">
@@ -49,7 +52,7 @@ function UserDashboard(props) {
       </div>
       <div className="dash-display">
         <h5>Vacancy Display</h5>
-        <p>{activeVacancy ? activeVacancy : "?"}</p>
+        <p>{activeVacancy ? activeVacancy.color : "?"}</p>
       </div>
     </div>
   );
