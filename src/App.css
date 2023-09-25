@@ -222,6 +222,10 @@ button {
   border-radius: 5px;
   padding: 10px;
 }
+.SignUp .signup-button {
+  background-color: #4e1e11;
+  color: white;
+}
 .SignUp .login-button {
   background-color: rgb(255, 233, 201);
 }/*# sourceMappingURL=App.css.map */

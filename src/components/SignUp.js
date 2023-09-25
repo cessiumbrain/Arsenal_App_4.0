@@ -70,7 +70,7 @@ function SignUp(props){
             type="text"></input>
             
 
-            <button onClick={()=>{handleSubmit()}}>Sign Up</button>
+            <button className="signup-button"onClick={()=>{handleSubmit()}}>Sign Up</button>
           
         </div>
                 

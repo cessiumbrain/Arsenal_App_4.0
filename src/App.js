@@ -1,8 +1,13 @@
 import "./App.css";
 import NavMenu from "./components/NavMenu";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { UserContext, SpecialContext, VacancyContext, WaitlistContext } from "./utils/context";
+import {
+  UserContext,
+  SpecialContext,
+  VacancyContext,
+  WaitlistContext,
+} from "./utils/context";
 import Login from "./components/Login";
 import AdminWrapper from "./components/AdminWrapper";
 import UserWrapper from "./components/UserWrapper";
@@ -10,14 +15,16 @@ import LoggedOutWrapper from "./components/LoggedOutWrapper";
 import { supabase } from "./utils/supabase";
 
 function App() {
+  //state
   const [user, setUser] = useState({
-    admin: true,
-    user_id: '99b2eac8-366e-4f1c-89dd-862134a21d57'
+    admin: false,
+    user_id: "99b2eac8-366e-4f1c-89dd-862134a21d57",
   });
-  const [ waitlist, setWaitlist ] = useState()
+  const [waitlist, setWaitlist] = useState();
   const [vacancy, setVacancy] = useState();
   const [specialsList, setSpecialsList] = useState();
 
+  //fetch
   async function fetchSpecials() {
     const { data, error } = await supabase.from("Specials").select("*");
 
@@ -28,39 +35,40 @@ function App() {
     setVacancy(data);
   }
   async function fetchWaitlist() {
-    
-let { data: Waitlist, error } = await supabase
-.from('Waitlist')
-.select(`
+    let { data: Waitlist, error } = await supabase.from("Waitlist").select(`
   *,
   Users (
    *
   )
-`)
+  `);
 
-// put the nested object into its containing object so all properties are on the first level
+    // put the nested object into its containing object so all properties are on the first level
 
-Waitlist.forEach(item =>{
-  item = {...item, ...item.Users}
-  delete item.Users
-})
+    Waitlist.forEach((item) => {
+      item = { ...item, ...item.Users };
+      delete item.Users;
+    });
 
     //sort into ascending by position
     Waitlist?.sort((a, b) => {
       return a.position - b.position;
     });
 
-    await setWaitlist(Waitlist)
-
-    
+    await setWaitlist(Waitlist);
   }
 
-  
+  //util functions
+  function logOut() {
+    setUser(null);
+    
+  }
+  //useEffect
   useEffect(() => {
+
     //initial fetch
     fetchSpecials();
     fetchVacancy();
-    fetchWaitlist()
+    fetchWaitlist();
 
     //subscribe to changes in specials
     const Specials = supabase
@@ -74,7 +82,8 @@ Waitlist.forEach(item =>{
         }
       )
       .subscribe();
-    console.log("specials subscription", Specials);
+    
+      console.log("specials subscription", Specials);
 
     //subscribe to changes in vacancies
     const Vacancy = supabase
@@ -101,13 +110,11 @@ Waitlist.forEach(item =>{
         }
       )
       .subscribe();
-    console.log("waitlist subscription", Waitlist);
+      console.log("waitlist subscription", Waitlist);
     return;
   }, []);
 
-  function logOut() {
-    setUser(null);
-  }
+
 
   async function changeVacancy(newStatusId) {
     if (newStatusId === -1) {

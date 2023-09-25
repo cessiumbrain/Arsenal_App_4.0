@@ -15,6 +15,11 @@ function Login(props){
             password: password,
         })
 
+        if(error){
+            console.warn(error)
+        }
+    
+    
         props.setUser(data.user)
 
     }

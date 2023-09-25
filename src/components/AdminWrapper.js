@@ -8,7 +8,7 @@ import SetVacancy from "./SetVacancy";
 import { UsersContext } from "../utils/context";
 import { WaitlistContext } from "../utils/context";
 
-import { addWaitlistUser, moveDownWaitUser } from "../utils/dbFunctions";
+import { addWaitlistUser } from "../utils/dbFunctions";
 
 function AdminWrapper(props) {
 
@@ -29,10 +29,6 @@ function AdminWrapper(props) {
   
     fetchUsers();
 
-
-
-
-
     //subscription cleanup
       return 
 
@@ -47,7 +43,7 @@ function AdminWrapper(props) {
           ></Route>
           <Route path="/admin-wait" element={<AdminWaitlist
           addWaitlistUser={addWaitlistUser}
-          moveWai
+
           />} />
           <Route
             path="/special-select"

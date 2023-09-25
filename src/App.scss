@@ -238,6 +238,10 @@ button {
         border-radius: 5px;
         padding: 10px;
     }
+    .signup-button{
+        background-color: $primary-color;
+        color: $prim-text-color;
+    }
     .login-button {
         background-color: $secondary-color;
     }

@@ -1,10 +1,13 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../utils/context";
+import { useNavigate } from "react-router-dom";
 
 function NavMenu(props) {
   const user= useContext(UserContext)
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigate = useNavigate()
 
   if(user.admin){
       return (
@@ -36,7 +39,10 @@ function NavMenu(props) {
                 Set Vacancy
             </Link>
           </li>
-          <li onClick={props.logOut}>
+          <li onClick={()=>{
+            navigate('/')
+            props.logOut()
+            }}>
             Logout
           </li>
         </ul>
@@ -53,7 +59,9 @@ function NavMenu(props) {
 
     <div className={`dropdown ${menuOpen ? "open" : "closed"}`}>
       <ul>
-        <li onClick={props.logOut}>
+        <li onClick={()=>{
+          navigate('/')
+          props.logOut()}}>
           Logout
         </li>
       </ul>
