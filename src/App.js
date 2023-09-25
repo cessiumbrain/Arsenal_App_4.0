@@ -1,6 +1,6 @@
 import "./App.css";
 import NavMenu from "./components/NavMenu";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
   UserContext,
@@ -8,7 +8,6 @@ import {
   VacancyContext,
   WaitlistContext,
 } from "./utils/context";
-import Login from "./components/Login";
 import AdminWrapper from "./components/AdminWrapper";
 import UserWrapper from "./components/UserWrapper";
 import LoggedOutWrapper from "./components/LoggedOutWrapper";
@@ -29,10 +28,16 @@ function App() {
     const { data, error } = await supabase.from("Specials").select("*");
 
     setSpecialsList(data);
+    if(error){
+      console.warn(error)
+    }
   }
   async function fetchVacancy() {
     const { data, error } = await supabase.from("Vacancy").select("*");
     setVacancy(data);
+    if(error){
+      console.warn(error)
+    }
   }
   async function fetchWaitlist() {
     let { data: Waitlist, error } = await supabase.from("Waitlist").select(`
@@ -41,6 +46,9 @@ function App() {
    *
   )
   `);
+  if(error){
+    console.warn(error)
+  }
 
     // put the nested object into its containing object so all properties are on the first level
 

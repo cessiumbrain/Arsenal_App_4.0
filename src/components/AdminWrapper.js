@@ -6,7 +6,6 @@ import AdminWaitlist from "./AdminWaitlist";
 import SpecialSelect from "./SpecialSelect";
 import SetVacancy from "./SetVacancy";
 import { UsersContext } from "../utils/context";
-import { WaitlistContext } from "../utils/context";
 
 import { addWaitlistUser } from "../utils/dbFunctions";
 
@@ -14,10 +13,7 @@ function AdminWrapper(props) {
 
   //useState
   const [users, setUsers] = useState();
-  const [waitlist, setWaitlist] = useState();
-  const [specials, setSpecials] = useState();
 
-  
 //db functions
 
   useEffect(() => {
@@ -25,6 +21,9 @@ function AdminWrapper(props) {
     async function fetchUsers() {
       const { data, error } = await supabase.from("Users").select("*");
       setUsers(data);
+      if(error){
+        console.warn(error)
+      }
     }
   
     fetchUsers();
@@ -48,7 +47,7 @@ function AdminWrapper(props) {
           <Route
             path="/special-select"
             element={<SpecialSelect
-            specials={specials}></SpecialSelect>}
+            ></SpecialSelect>}
           />
           <Route path="/set-vacancy" element={<SetVacancy
           changeVacancy={props.changeVacancy}></SetVacancy>} />

@@ -2,7 +2,7 @@ import {useState, useContext, useEffect} from 'react'
 import { SpecialContext } from '../utils/context'
 import { supabase } from '../utils/supabase'
 
-function SpecialSelect(props){
+function SpecialSelect(){
     const [selectedSpecial, setSelectedSpecial] = useState()
     const specialsList = useContext(SpecialContext)
     const activeSpecial = specialsList?.find(special=>{  
@@ -28,11 +28,15 @@ function SpecialSelect(props){
    }
    }
    async function clearSpecial(){
-    const { data, error } = await supabase
+    const { error } = await supabase
         .from('Specials')
         .update({ 'active': 'false' })
         .eq('active', 'true')
         .select()
+
+        if(error){
+            console.warn(error)
+        }
    }
    useEffect(()=>{
 

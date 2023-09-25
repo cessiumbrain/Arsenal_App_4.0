@@ -1,39 +1,40 @@
 import { useContext, useEffect, useState } from "react";
-import { SpecialContext, UserContext, VacancyContext, WaitlistContext } from "../utils/context";
-import { wait } from "@testing-library/user-event/dist/utils";
+import {
+  SpecialContext,
+  UserContext,
+  VacancyContext,
+  WaitlistContext,
+} from "../utils/context";
 
 function UserDashboard(props) {
   const [activeSpecial, setActiveSpecial] = useState();
   const [userPosition, setUserPosition] = useState();
-  const [activeVacancy, setActiveVacancy] = useState()
+  const [activeVacancy, setActiveVacancy] = useState();
 
   const user = useContext(UserContext);
   const specialsList = useContext(SpecialContext);
   const waitlist = useContext(WaitlistContext);
-  const vacancy = useContext(VacancyContext)
-
- 
-  
-
+  const vacancy = useContext(VacancyContext);
 
   useEffect(() => {
     setActiveSpecial(specialsList?.find((special) => special.active));
 
-    if(waitlist){
+    if (waitlist) {
       const userPosition = waitlist.find((item) => {
-      console.log(item.user_id, user.user_id);
-      return item.user_id == user.user_id;
-    })?.position;
+        console.log(item.user_id, user.user_id);
+        return item.user_id === user.user_id;
+      })?.position;
 
-    setUserPosition(userPosition)
+      setUserPosition(userPosition);
     }
-    if(vacancy){
-      setActiveVacancy(vacancy.find(item=>{
-      return item.active ===true
-    }))
+    if (vacancy) {
+      setActiveVacancy(
+        vacancy.find((item) => {
+          return item.active === true;
+        })
+      );
     }
-
-  }, [specialsList, WaitlistContext, VacancyContext]);
+  }, [specialsList, waitlist, vacancy, user.user_id]);
 
   return (
     <div className="UserDash">
@@ -48,8 +49,7 @@ function UserDashboard(props) {
       </div>
       <div className="dash-display">
         <h5>Vacancy Display</h5>
-        <p>{activeVacancy ? activeVacancy : '?'}</p>
-      
+        <p>{activeVacancy ? activeVacancy : "?"}</p>
       </div>
     </div>
   );
