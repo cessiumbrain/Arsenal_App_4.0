@@ -228,4 +228,10 @@ button {
 }
 .SignUp .login-button {
   background-color: rgb(255, 233, 201);
+}
+
+@media (max-width: 500px) {
+  .Admin-Waitlist .waitlist {
+    width: 90%;
+  }
 }/*# sourceMappingURL=App.css.map */

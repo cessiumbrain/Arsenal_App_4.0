@@ -1,9 +1,9 @@
 ## To Do
-- [ ] change app name
+
 - [ ] media queries
 - [ ] screen shot
 - [ ] add to portfolio
-- [ ] change favicon
+
 - [ ] disable email confirmation
 - [ ] login and signup error handling
 - [ ] persist login state
@@ -12,6 +12,8 @@
 
 
 ## Done
+- [x] change app name
+- [x] change favicon
 - [x] on signup or login you need to set the user to its db value not its auth db value
 - [x] style display grid
 - [x] navigate to login on logout

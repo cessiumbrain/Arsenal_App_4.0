@@ -39,7 +39,7 @@ function Login(props){
             <label>password</label>
             <input
             onChange={(e)=>{setPassword(e.target.value)}}
-            type="text"
+            type="password"
             ></input>
             <button className="login-button"
             onClick={()=>{handleLogin()}}>Log In</button>

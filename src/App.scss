@@ -246,3 +246,12 @@ button {
         background-color: $secondary-color;
     }
 }
+
+@media (max-width: 500px) {
+    .Admin-Waitlist{
+        .waitlist {
+        width: 90%;
+    }
+    }
+    
+}

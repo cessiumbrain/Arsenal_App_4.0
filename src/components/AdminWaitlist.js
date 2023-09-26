@@ -81,7 +81,7 @@ function WaitSelect() {
           ? users.map((user) => {
               return (
                 <option value={user.user_id} key={user.user_id}>
-                  {user.first_name}
+                  {user.first_name} {user.last_name}
                 </option>
               );
             })
