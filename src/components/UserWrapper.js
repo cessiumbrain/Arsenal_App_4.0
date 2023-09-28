@@ -1,4 +1,5 @@
 import UserDashboard from "./UserDashboard";
+import Chat from './Chat'
 import {Routes, Route} from 'react-router-dom';
 import {useState, useContext, useEffect} from 'react'
 import { SpecialContext } from "../utils/context";
@@ -9,7 +10,7 @@ function UserWrapper() {
   const [activeSpecial, setActiveSpecial] = useState();
   const specialsList = useContext(SpecialContext)
   
-    
+  //join users and waitlist
   
 
 
@@ -18,6 +19,7 @@ function UserWrapper() {
       <Route path="/" element={<UserDashboard
       myPosition={myPosition}
       ></UserDashboard>}></Route>
+      <Route path="/chat" element={<Chat></Chat>}></Route>
     </Routes>
   );
 }
