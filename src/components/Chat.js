@@ -17,7 +17,7 @@ function Chat(){
         setGPTisTyping(true)
 
         setCurrentMessage('')
-       const response = await fetch('https://personal-server-8kq2.onrender.com/gpt', {
+       const response = await fetch('/gpt', {
         mode: 'cors',
          method: "POST",
          body: JSON.stringify(newHistory),

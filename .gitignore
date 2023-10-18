@@ -20,6 +20,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # other
+/vars
 .env
 # Local Netlify folder
 .netlify

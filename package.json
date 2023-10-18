@@ -2,6 +2,7 @@
   "name": "arsenal-app-4.0",
   "version": "0.1.0",
   "private": true,
+  "proxy":"'https://personal-server-8kq2.onrender.com",
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
     "@testing-library/jest-dom": "^5.17.0",
