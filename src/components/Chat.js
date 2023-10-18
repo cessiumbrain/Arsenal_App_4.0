@@ -5,22 +5,27 @@ function Chat(){
     const [chatHistory, setChatHistory] = useState([{role: "assistant", content: "How can I help you"}])
     const [GPTisTyping, setGPTisTyping] = useState(false)
     const [currentMessage, setCurrentMessage] = useState() 
-    console.log(chatHistory)
+
     
     //api call
     async function sendMessage(){
         const newHistory = chatHistory.concat({role: 'user', content: currentMessage})
+        
+      
         await setChatHistory(newHistory)
+
         setGPTisTyping(true)
 
         setCurrentMessage('')
-       const response = await fetch("http://localhost:3001/gpt", {
+       const response = await fetch('https://personal-server-8kq2.onrender.com/gpt', {
+        mode: 'cors',
          method: "POST",
-         body: JSON.stringify({"role": 'user', "content": currentMessage}),
+         body: JSON.stringify(newHistory),
          headers: {
            "Content-type": "application/json",
          },
        }); 
+       console.log(response)
 
         response.body
         .getReader()

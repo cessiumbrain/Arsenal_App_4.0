@@ -1,5 +1,5 @@
 ## To Do
-
+- [ ] password input type password
 - [ ] media queries
 - [ ] screen shot
 - [ ] add to portfolio
