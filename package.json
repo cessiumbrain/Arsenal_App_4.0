@@ -2,7 +2,6 @@
   "name": "arsenal-app-4.0",
   "version": "0.1.0",
   "private": true,
-  "proxy":"'https://personal-server-8kq2.onrender.com",
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
     "@testing-library/jest-dom": "^5.17.0",
@@ -25,9 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "api:serve": "netlify-lambda serve .netlify/functions",
     "start": "react-scripts start",
-    "build": "node server.js",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

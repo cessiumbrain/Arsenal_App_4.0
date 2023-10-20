@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4a4b5bf1.css",
+    "main.js": "/static/js/main.c2876917.js",
+    "static/js/787.7bc5627d.chunk.js": "/static/js/787.7bc5627d.chunk.js",
+    "static/media/Collage Multiply.jpg": "/static/media/Collage Multiply.b58f1c6856103817c6be.jpg",
+    "index.html": "/index.html",
+    "main.4a4b5bf1.css.map": "/static/css/main.4a4b5bf1.css.map",
+    "main.c2876917.js.map": "/static/js/main.c2876917.js.map",
+    "787.7bc5627d.chunk.js.map": "/static/js/787.7bc5627d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4a4b5bf1.css",
+    "static/js/main.c2876917.js"
+  ]
+}

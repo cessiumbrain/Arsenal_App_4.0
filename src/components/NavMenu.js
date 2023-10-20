@@ -60,6 +60,9 @@ function NavMenu(props) {
     <div className={`dropdown ${menuOpen ? "open" : "closed"}`}>
       <ul>
         <li onClick={()=>{
+          navigate('/chat')
+        }}>AI Assitant</li>
+        <li onClick={()=>{
           navigate('/')
           props.logOut()}}>
           Logout

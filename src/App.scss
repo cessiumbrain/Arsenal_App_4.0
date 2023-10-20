@@ -142,7 +142,8 @@ button {
         padding: 0px;
         text-align: center;
         li{
-            padding: 2.5px
+            padding: 2.5px;
+            cursor: pointer;
         }
         a{
             color: black;
@@ -150,6 +151,7 @@ button {
             text-decoration: none;
         }
     }
+    
     i{
         padding: 5px;
         margin: 2px;
@@ -263,6 +265,8 @@ button {
         overflow-y: scroll;
         height: 300px;
         flex-grow: 0;
+        overflow-anchor: auto;
+
     }
     
     .assistant {

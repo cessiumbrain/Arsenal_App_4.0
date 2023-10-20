@@ -1,12 +1,11 @@
 ## To Do
-- [ ] password input type password
-- [ ] media queries
-- [ ] screen shot
-- [ ] add to portfolio
-
-- [ ] disable email confirmation
-- [ ] login and signup error handling
-- [ ] persist login state
+- [x] no break between role and message content
+- [ ] dashboard navigation
+- [ ] chat navigation button
+- [ ] scroll on new message
+- [ ] redeploy
+- [ ] screenshot
+- [ ] deploy standalone chat
 
 
 
